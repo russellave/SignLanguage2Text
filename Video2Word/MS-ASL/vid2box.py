@@ -45,9 +45,6 @@ def makeCroppedVideo(pathOut, fps):
 
 if __name__ == '__main__':
     splits = ['train']#,'test', 'val']
-
-    read_dirs = ['train_data', 'val_data', 'test_data']
-    write_dirs = ['train_box', 'val_box', 'test_box']
     for data_split in splits:
         files = set(os.listdir(data_split+'_data'))
         # print(files)
