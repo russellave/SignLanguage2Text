@@ -19,7 +19,6 @@ def convertBbox(box_norm, width, height):
 
 def makeCroppedVideo(pathOut, fps):
     pathIn= 'temp_img/'
-    fps = 0.5
     frame_array = []
     files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]#for sorting the file names properly
     # files.sort(key = lambda x: x[5:-4])
@@ -51,7 +50,7 @@ if __name__ == '__main__':
 
         with open('MSASL_'+data_split+'.json') as f:
           data = json.load(f)
-        for ent in data[0:10]:
+        for ent in data[0:50]:
             url = ent["url"]
             gloss = ent["clean_text"]
             signer_id = ent["signer_id"]
@@ -71,21 +70,26 @@ if __name__ == '__main__':
                 w = ent['width']
                 h = ent['height']
                 b = convertBbox(box_norm, w, h)
-                ##open cv solution
-                # cap = cv2.VideoCapture(full_vid_path)
-                # ind = 1
-                # while True:
-                #     ret, frame = cap.read()
-                #     if(ret):
-                #         cropped = frame[int(b[0]):int(b[2]), int(b[1]):int(b[3])]
-                #         img_str = 'temp_img/image'+str(ind)+'.jpg'
-                #         cv2.imwrite(img_str,cropped)
-                #         ind+=1
-                #     else:
-                #         break
+                #open cv solution
+                cap = cv2.VideoCapture(full_vid_path)
+                ind = 1
+
+                #clear temp_img_dir
+                temp_dir = 'temp_img'
+                for filename in os.listdir(temp_dir):
+                    os.unlink(os.path.join(temp_dir,filename))
+                while True:
+                    ret, frame = cap.read()
+                    if(ret):
+                        cropped = frame[int(b[1]):int(b[3]), int(b[0]):int(b[2])]
+                        img_str = 'temp_img/image'+str(ind)+'.jpg'
+                        cv2.imwrite(img_str,cropped)
+                        ind+=1
+                    else:
+                        break
+                makeCroppedVideo(box_vid_path, fps)
 
                 ##moviepy solution
-                # makeCroppedVideo(box_vid_path, fps)
-                with VideoFileClip(full_vid_path) as video:
-                    outvid = crop(video, x1=b[0], y1=b[1], x2=b[2], y2=b[3])
-                    outvid.write_videofile(box_vid_path, fps = fps) # default codec: 'libx264', 24 fps
+                # with VideoFileClip(full_vid_path) as video:
+                #     outvid = crop(video, x1=b[0], y1=b[1], x2=b[2], y2=b[3])
+                #     outvid.write_videofile(box_vid_path, fps = fps) # default codec: 'libx264', 24 fps
