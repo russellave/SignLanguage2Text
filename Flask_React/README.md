@@ -4,7 +4,7 @@ This may be in more detail/have more explanation than you need, but I went for m
 I have a PC.  I think things should be the same for Mac, but I make no promises.
 
 ## To install all the libraries and such that you'll need so far: 
-pip install -r requirements.txt (only needs to be done the first time)
+`pip install -r requirements.txt` (only needs to be done the first time)
 
 It's possible that I already had some things installed and didn't realize they were missing from requirements.txt, so if you get an error saying something wasn't found when you try to run things, just install it and add it to requirements.txt for other people's future use.  
 
@@ -13,25 +13,25 @@ These weights are too big to push to git, so they're git ignored and you'll need
 
 Open a terminal. 
 
-wget https://pjreddie.com/media/files/yolov3.weights -O weights/yolov3.weights
+`wget https://pjreddie.com/media/files/yolov3.weights -O weights/yolov3.weights`
 
 You can also download the tiny yolo weights using this command: 
 
-wget https://pjreddie.com/media/files/yolov3-tiny.weights -O weights/yolov3-tiny.weights
+`wget https://pjreddie.com/media/files/yolov3-tiny.weights -O weights/yolov3-tiny.weights`
 
 but unless you change the parameters that are set now you shouldn't need them. 
 
 ## Running backend 
 Open a terminal.  cd into backend folder. 
 
-python app.py
+`python app.py`
 
 This will run the backend part.  From what I understand, flask makes it so that when this is running you can send API requests to the location specified in app.py.  The last line in app.py is currently "app.run(debug=True, host = '0.0.0.0', port=5000)", so you can send requests to localhost:5000 (based on the host and port arguments).  
 
 ## Running frontend 
 Open another terminal.  cd into frontend folder. 
 
-npm run 
+`npm run `
 
 A tab should automatically open up in your browser, and you'll be able to see and play around with the frontend interface.  
 
@@ -45,7 +45,7 @@ Download Postman from https://www.postman.com/downloads/
 
 Open Postman 
 
-Run the backend (open a terminal, cd into backend folder, python app.py)
+Run the backend (open a terminal, cd into backend folder, `python app.py`)
 ## add the rest of these steps!!
 
 
