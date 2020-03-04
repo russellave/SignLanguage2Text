@@ -46,7 +46,7 @@ Download Postman from https://www.postman.com/downloads/
 Open Postman 
 
 Run the backend (open a terminal, cd into backend folder, `python app.py`)
-## add the rest of these steps!!
+### finish this!
 
 
 
