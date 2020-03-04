@@ -1,28 +1,38 @@
 # How I get it to run on my laptop:
 This may be in more detail/have more explanation than you need, but I went for more just in case anyone needs it (I would have needed it).  
+
 I have a PC.  I think things should be the same for Mac, but I make no promises.
 
 ## To install all the libraries and such that you'll need so far: 
 pip install -r requirements.txt (only needs to be done the first time)
+
 It's possible that I already had some things installed and didn't realize they were missing from requirements.txt, so if you get an error saying something wasn't found when you try to run things, just install it and add it to requirements.txt for other people's future use.  
 
 ## To download the weights of the object detection model:
 These weights are too big to push to git, so they're git ignored and you'll need to download them yourself.  If you don't want to bother with this because we won't need these weights for the real project, you can just test with the "Say Hi" part instead of the person detection part.  
 
 Open a terminal. 
+
 wget https://pjreddie.com/media/files/yolov3.weights -O weights/yolov3.weights
+
 You can also download the tiny yolo weights using this command: 
+
 wget https://pjreddie.com/media/files/yolov3-tiny.weights -O weights/yolov3-tiny.weights
+
 but unless you change the parameters that are set now you shouldn't need them. 
 
 ## Running backend 
 Open a terminal.  cd into backend folder. 
+
 python app.py
+
 This will run the backend part.  From what I understand, flask makes it so that when this is running you can send API requests to the location specified in app.py.  The last line in app.py is currently "app.run(debug=True, host = '0.0.0.0', port=5000)", so you can send requests to localhost:5000 (based on the host and port arguments).  
 
 ## Running frontend 
 Open another terminal.  cd into frontend folder. 
+
 npm run 
+
 A tab should automatically open up in your browser, and you'll be able to see and play around with the frontend interface.  
 
 
@@ -56,8 +66,9 @@ finding react components to use online
 
 
 
-# Instructions from original backend git repo (where some of the stuff above comes from, in more detail):
-# Yolov3 Object Detection with Flask and Tensorflow 2.0 (APIs and Detections)
+# Instructions from original backend git repo (where some of the stuff above comes from):
+[Here](https://github.com/theAIGuysCode/Object-Detection-API) is the original backend repo that I added to a little bit.
+## Yolov3 Object Detection with Flask and Tensorflow 2.0 (APIs and Detections)
 Yolov3 is an algorithm that uses deep convolutional neural networks to perform object detection. This repository implements Yolov3 using TensorFlow 2.0 and creates two easy-to-use APIs that you can integrate into web or mobile applications. <br>
 
 ![example](https://github.com/theAIGuysCode/Object-Detection-API/blob/master/detections/detection.jpg)
