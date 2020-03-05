@@ -153,7 +153,7 @@ def hi_caroline():
     try:
         return Response(response='Hi '+request.form['name'], status=200)
     except:
-        abort(203)
+        abort(404)
 
 
 if __name__ == '__main__':

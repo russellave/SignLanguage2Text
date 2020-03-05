@@ -43,11 +43,24 @@ If you want to be able to test that the backend is working without having the fr
 
 Download Postman from https://www.postman.com/downloads/
 
-Open Postman 
-
 Run the backend (open a terminal, cd into backend folder, `python app.py`)
-### finish this!
 
+Open Postman.  Click "Create a request" on the launchpad screen.  
+
+Click on Body in the row of tabs under where it says Send.  Select the form-data option.  
+
+Now you'll be able to make a request that matches what our frontend will send.  Requests are in JSON format, so they'll basically look like a collection of Python dictionaries.  There will be one dictionary of files and one of text.  Within each of those, every entry has a key and value (like in a normal dictionary).  
+
+You can see how Postman lets you construct an entry that has this format - you can specify the key, value, and whether it's a File or Text (shows up when you hover over Key). So you can choose File vs. Text and type in your key and value.  
+
+Then, at the top, you can enter the address that Postman should send the request to.  With everything how it's set up right now, you want it to be http://localhost:5000/whatever_backend_route_youre_testing.  Change the method type to the left of that to be whatever you're testing.  When you hit send, you'll see the response you get back underneath the place where you enter the key and value fields.  
+
+Here's what you would enter into all of those places to get a response that says "Hi SignLanguage2Text":
+- key: name
+- Text, not File 
+- value: SignLanguage2Text
+- method: select POST from the dropdown menu 
+- request URL: http://localhost:5000/caroline
 
 
 ## Adding to backend 
