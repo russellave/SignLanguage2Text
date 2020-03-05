@@ -67,7 +67,7 @@ Here's what you would enter into all of those places to get a response that says
 adding route
 route decorator and how it relates to the function and how that gets used in the frontend to connect things together
 can print to terminal to help debug 
-### finish this!
+### I'll finish this soon
 
 ## Adding to frontend 
 axios - what it does, why, how it's similar to what postman is doing 
@@ -75,7 +75,7 @@ inspecting page and going to console, console.log
 files and form in request 
 react components and pages 
 finding react components to use online 
-### finish this!
+### I'll finish this soon 
 
 
 
