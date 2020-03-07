@@ -1,7 +1,9 @@
-# How I get it to run on my laptop:
-This may be in more detail/have more explanation than you need, but I went for more just in case anyone needs it (I would have needed it).  
+# Disclaimers:
+This may be in more detail/have more explanation than you need, but I went for more just in case anyone needs it (I would have needed it).  Also, some of the terminology could be wrong or imprecise - this is my best guess at the right words based on a few days of learning this stuff.  
 
 I have a PC.  I think things should be the same for Mac, but I make no promises.
+
+# How I get it to run on my laptop:
 
 ## To install all the libraries and such that you'll need so far: 
 `pip install -r requirements.txt` (only needs to be done the first time)
@@ -82,7 +84,8 @@ Debugging:
 
 Using React 
 - For most things you can think of that you need, you can google "(thing that you need) react" and find an existing component that pretty much does it.  You'll probably need to use npm to install things to get it to work, but that's easy.  
-- Within html tags, you can use curly braces { } to use javascript.  This is useful, for example, if you want to make a header that displays the content of some variable "num_clicks"; you would do `<h1> {num_clicks} </h1>`.  
+- Within html tags, you can use curly braces { } to use javascript.  A simple example where this is useful is if you want to make a header that displays the content of some variable "num_clicks"; you would do `<h1> {num_clicks} </h1>`.  
+- You can add and update key value pairs to the component's state (this.state).  This is super useful.  You can look through uploader.jsx to see a few examples of it.  
 - You can import components from other components.  This lets you make more complex things while keeping it modular.  One common place where this is done is in making different pages of a website; you could have a home page component that has multiple other components in it.  
 - Components can have css files to set the styling.  
 
@@ -90,16 +93,18 @@ Sending requests to backend
 - We saw before how we can send requests to the backend using Postman.  All we need to be able to do from the frontend is to send the requests that we already tested and sent in Postman.  Axios lets us do this.  
 
 Here's some code using axios to send requests from frontend/uploader.jsx:
-``const data = new FormData();
-data.append('name', this.state.name)
-axios.post("http://localhost:5000/caroline", data). then(res => {
-    console.log(res);
-    this.setState({
-        display_str: res.data
-    })
-}``
+- `const data = new FormData();` - This line creates a new FormData instance; FormData is what we need to add to and send as our request.  
 
-files and form in request 
+- `data.append('name', this.state.name)` - This line shows how to add an entry into the request.  If the value is text, it will automatically go to the text (form) dictionary.  If it's a file, it will automatically go to the file dictionary.  
+- `axios.post("http://localhost:5000/caroline", data). then(res => {`
+          `console.log(res);`
+          `this.setState({`
+          `display_str: res.data`
+      `})`
+    `}`
+  There are two important things going on with this:
+  1. The `axios.post` part - here's where you specify where to send the request and what to send. 
+  2. The `.then()` part - Anything inside of the .then function will wait to run until the request is sent and the response is received.  Whatever is received will go into the variable `res` (or whatever other name you give a variable in the same position).  You can then do whatever you need to with that response: in this case, print it to the console and set the state to hold the data field.  
 
 ### I'll finish this soon 
 
