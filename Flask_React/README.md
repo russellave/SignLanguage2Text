@@ -74,7 +74,7 @@ Adding a function:
 - Write the Python function that you want to call, in mostly normal Python syntax, with these exceptions:
   -  The function will automatically receive an argument called 'request' which is the JSON file that gets sent to whatever was sent to the route that you specify for this function.  You can print the request to see what's in it.  To get the dictionary of files in it, do request.files.  To get the dictionary of text in it, do request.form.  You can index into those dictionaries using the keys you put into the JSON file.  
   - Put a decorator on the line above the function definition that is in a format like this: `@app.route('/caroline', methods=['POST','OPTIONS'])` where `/caroline` is replaced by whatever route you want to be attached to this function and `methods` has whatever API call methods are allowed for it.  So, when I put this decorator above the `hi_caroline` function in app.py, I made it so that when a `POST` or `OPTIONS` API request is sent to `hostaddress/caroline`, `hi_caroline` is called.  The names `/caroline` and `hi_caroline` don't have to be related to each other; the placement of the decorator is what connects the route to the function.  
-### I'll finish this soon
+- You can call functions from other files within the one in app.py as long as you import them 
 
 ## Adding to frontend 
 axios - what it does, why, how it's similar to what postman is doing 
