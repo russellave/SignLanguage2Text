@@ -66,7 +66,7 @@ Here's what you would enter into all of those places to get a response that says
 ## Adding to backend 
 To add new backend functionality (add a python function of some sort that you want to run when something happens on the website - like a person clicking a button), the main file you need to work with is backend/app.py.  
 
-Debugging methods:
+Debugging:
 - Postman 
 - Print statements - will print to the console that you run the backend from 
 
@@ -77,11 +77,30 @@ Adding a function:
 - You can call functions from other files within the one in app.py as long as you import them 
 
 ## Adding to frontend 
-axios - what it does, why, how it's similar to what postman is doing 
-inspecting page and going to console, console.log 
+Debugging: 
+- In your browser, right click, click inspect, and then click console.  You can use console.log to print stuff to here.
+
+Using React 
+- For most things you can think of that you need, you can google "(thing that you need) react" and find an existing component that pretty much does it.  You'll probably need to use npm to install things to get it to work, but that's easy.  
+- Within html tags, you can use curly braces { } to use javascript.  This is useful, for example, if you want to make a header that displays the content of some variable "num_clicks"; you would do <h1> {num_clicks} </h1>.  
+- You can import components from other components.  This lets you make more complex things while keeping it modular.  One common place where this is done is in making different pages of a website; you could have a home page component that has multiple other components in it.  
+- Components can have css files to set the styling.  
+
+Sending requests to backend 
+- We saw before how we can send requests to the backend using Postman.  All we need to be able to do from the frontend is to send the requests that we already tested and sent in Postman.  Axios lets us do this.  
+
+Here's some code using axios to send requests from frontend/uploader.jsx:
+``const data = new FormData();
+data.append('name', this.state.name)
+axios.post("http://localhost:5000/caroline", data). then(res => {
+    console.log(res);
+    this.setState({
+        display_str: res.data
+    })
+}``
+
 files and form in request 
-react components and pages 
-finding react components to use online 
+
 ### I'll finish this soon 
 
 
