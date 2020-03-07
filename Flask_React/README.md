@@ -101,14 +101,12 @@ Here's some code using axios to send requests from frontend/uploader.jsx:
         this.setState({
         display_str: res.data
         })
-      }
+      })
  There are two important things going on with this:
   1. The `axios.post` part - here's where you specify where to send the request and what to send. 
   2. The `.then()` part - Anything inside of the .then function will wait to run until the request is sent and the response is received.  Whatever is received will go into the variable `res` (or whatever other name you give a variable in the same position).  You can then do whatever you need to with that response: in this case, print it to the console and set the state to hold the data field.  
 
-### I'll finish this soon 
-
-
+There are a lot more things to be said about React/Javscript/HTML/CSS that I'm not the best person to tell you, but there are tons of useful tutorials and things like that available, and hopefully this is enough to explain most of the connecting frontend to backend stuff and some basics of how to read what's here so far and add new components.  
 
 # Link to original backend git repo (where some of the stuff above comes from):
 [Here](https://github.com/theAIGuysCode/Object-Detection-API) is the original backend repo that I added to a little bit. Their readme has a lot of information, so if something that you need isn't here, it might be there.  
