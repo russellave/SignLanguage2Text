@@ -96,17 +96,12 @@ Here's some code using axios to send requests from frontend/uploader.jsx:
 - `const data = new FormData();` - This line creates a new FormData instance; FormData is what we need to add to and send as our request.  
 
 - `data.append('name', this.state.name)` - This line shows how to add an entry into the request.  If the value is text, it will automatically go to the text (form) dictionary.  If it's a file, it will automatically go to the file dictionary.  
-- `axios.post("http://localhost:5000/caroline", data). then(res => {`
-
-          `console.log(res);`
-
-          `this.setState({`
-
-          `display_str: res.data`
-
-      `})`
-
-    `}`
+-        axios.post("http://localhost:5000/caroline", data). then(res => {
+          console.log(res);
+          this.setState({
+          display_str: res.data
+          })
+        }
   - There are two important things going on with this:
   1. The `axios.post` part - here's where you specify where to send the request and what to send. 
   2. The `.then()` part - Anything inside of the .then function will wait to run until the request is sent and the response is received.  Whatever is received will go into the variable `res` (or whatever other name you give a variable in the same position).  You can then do whatever you need to with that response: in this case, print it to the console and set the state to hold the data field.  
