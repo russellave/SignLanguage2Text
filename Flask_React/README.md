@@ -82,7 +82,7 @@ Debugging:
 
 Using React 
 - For most things you can think of that you need, you can google "(thing that you need) react" and find an existing component that pretty much does it.  You'll probably need to use npm to install things to get it to work, but that's easy.  
-- Within html tags, you can use curly braces { } to use javascript.  This is useful, for example, if you want to make a header that displays the content of some variable "num_clicks"; you would do <h1> {num_clicks} </h1>.  
+- Within html tags, you can use curly braces { } to use javascript.  This is useful, for example, if you want to make a header that displays the content of some variable "num_clicks"; you would do `<h1> {num_clicks} </h1>`.  
 - You can import components from other components.  This lets you make more complex things while keeping it modular.  One common place where this is done is in making different pages of a website; you could have a home page component that has multiple other components in it.  
 - Components can have css files to set the styling.  
 
