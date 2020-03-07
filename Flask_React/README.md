@@ -64,9 +64,16 @@ Here's what you would enter into all of those places to get a response that says
 
 
 ## Adding to backend 
-adding route
-route decorator and how it relates to the function and how that gets used in the frontend to connect things together
-can print to terminal to help debug 
+To add new backend functionality (add a python function of some sort that you want to run when something happens on the website - like a person clicking a button), the main file you need to work with is backend/app.py.  
+
+Debugging methods:
+- Postman 
+- Print statements - will print to the console that you run the backend from 
+
+Adding a function:
+- Write the Python function that you want to call, in mostly normal Python syntax, with these exceptions:
+  -  The function will automatically receive an argument called 'request' which is the JSON file that gets sent to whatever was sent to the route that you specify for this function.  You can print the request to see what's in it.  To get the dictionary of files in it, do request.files.  To get the dictionary of text in it, do request.form.  You can index into those dictionaries using the keys you put into the JSON file.  
+  - Put a decorator on the line above the function definition that is in a format like this: `@app.route('/caroline', methods=['POST','OPTIONS'])` where `/caroline` is replaced by whatever route you want to be attached to this function and `methods` has whatever API call methods are allowed for it.  So, when I put this decorator above the `hi_caroline` function in app.py, I made it so that when a `POST` or `OPTIONS` API request is sent to `hostaddress/caroline`, `hi_caroline` is called.  The names `/caroline` and `hi_caroline` don't have to be related to each other; the placement of the decorator is what connects the route to the function.  
 ### I'll finish this soon
 
 ## Adding to frontend 
