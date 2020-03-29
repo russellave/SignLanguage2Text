@@ -1,0 +1,23 @@
+    
+.all {
+    font-family:BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    /* font-family: 'Libre Baskerville', serif; */
+    /* font-family: 'Nunito', sans-serif; */
+    /* font-family: 'Judson', serif; */
+    /* font-family: "Trebuchet MS", Helvetica, sans-serif; */
+    /* font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; */
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.display-page {
+    padding: 20px 60px;
+}
+
+
+/* .header {
+    background-color: lime;
+} */
