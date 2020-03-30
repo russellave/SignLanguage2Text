@@ -1,14 +1,12 @@
 import React, { Component } from "react"
 import './home_page.css';
 import Helmet from 'react-helmet';
-import FadeIn from 'react-fade-in';
 
-
-class Home extends React.Component {
+class HomePage extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             clicked: false
         }
     }
@@ -25,17 +23,21 @@ class Home extends React.Component {
 
             <div>
                 <Helmet bodyAttributes={{ style: 'background-color : #314455' }} />
-                <div className="main_title" >
+                <div className="main-title" >
                     ASL to Text Translation
                 </div>
-                <div className="it_subheading">
+                <div className="it-subheading">
                     at the click of a button
                 </div>
-                <button type="button" class="btn-lg btn-lg-red"  onClick={this.onClickHandler}>Translator</button>
-                <button type="button" className="btn-lg btn-lg-gray" onClick={this.onClickHandler}>How it works</button>
-            </ div>
+                <a href="/trial">
+                    <button type="button" class="btn-lg btn-lg-red">
+                        Translator
+                    </button>
+                </a>
+                <button type="button" className="btn-lg btn-lg-gray" >How it works</button>
+            </ div >
         )
     }
 }
 
-export default Home;
+export default HomePage;

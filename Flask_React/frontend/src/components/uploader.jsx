@@ -74,7 +74,7 @@ class Uploader extends React.Component {
 
     render() {
         if(this.state.responseStatusOK){
-            wait(200)
+            wait(500)
             return <img src={require('../assets/detection.jpg')} alt="" height="300" width="300" />
         }
         else{
