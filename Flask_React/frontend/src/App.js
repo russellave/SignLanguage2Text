@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Uploader from './components/uploader.jsx';
+import HomePage from './pages/home_page/home_page.jsx';
+import TrialPage from './pages/trial_page/trial_page.jsx'
+import { Switch, Route } from 'react-router-dom';
 
 class App extends Component {
     // initialize our state
@@ -11,8 +13,13 @@ class App extends Component {
     // see them render into our screen
     render() {
         return (
-            <Uploader/>
-            );
+            <div>
+                <Switch>
+                    <Route exact={true} path='/' component={HomePage} />
+                    <Route exact={true} path='/trial' component={TrialPage} />
+                </Switch>
+            </div>
+        );
     }
 }
 

@@ -13,7 +13,7 @@ function wait(ms){
    }
  }
 
-class Uploader extends React.Component {
+class Uploader_2 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -74,7 +74,7 @@ class Uploader extends React.Component {
 
     render() {
         if(this.state.responseStatusOK){
-            wait(500)
+            wait(200)
             return <img src={require('../assets/detection.jpg')} alt="" height="300" width="300" />
         }
         else{
@@ -84,20 +84,10 @@ class Uploader extends React.Component {
                         <div className="offset-md-3 col-md-6">
 
                             <div className="form-group files">
-                                <label>Upload Your File </label>
+                                <label>Upload Video </label>
                                 <input type="file" className="form-control" multiple="" onChange={this.onChangeHandler} />
                             </div>
-                            <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Detect</button>
-                            <br/>
-                            <input type="text" placeholder ="Who should I say hi to?" onChange={this.updateState}/>
-                            <br/>
-                            <button type="button" class="btn btn-primary" onClick={this.sayHi}>Say Hi</button>
-                            {
-                                this.state.display_str != '' ? 
-                                <h1> {this.state.display_str} </h1>
-                                :
-                                <h1> didn't ask me to say hi yet :( </h1>
-                            }
+                            <button type="button" class="btn btn-success btn-block" onClick={this.onClickHandler}>Translate</button>
                         </div>
                     </div>
                 </div>
@@ -106,4 +96,4 @@ class Uploader extends React.Component {
     }
 }
 
-export default Uploader;
+export default Uploader_2;

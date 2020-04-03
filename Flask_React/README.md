@@ -31,11 +31,16 @@ Open a terminal.  cd into backend folder.
 This will run the backend part.  From what I understand, flask makes it so that when this is running you can send API requests to the location specified in app.py.  The last line in app.py is currently "app.run(debug=True, host = '0.0.0.0', port=5000)", so you can send requests to localhost:5000 (based on the host and port arguments).  
 
 ## Running frontend 
+
 Open another terminal.  cd into frontend folder. 
+
+`npm install`
 
 `npm run `
 
 A tab should automatically open up in your browser, and you'll be able to see and play around with the frontend interface.  
+
+Note: if `npm run` doesn't work, try `npm start` - worked for me
 
 
 # Things that I learned that might be useful / how to edit and add to what's here so far: 
@@ -88,6 +93,7 @@ Using React
 - You can add and update key value pairs to the component's state (this.state).  This is super useful.  You can look through uploader.jsx to see a few examples of it.  
 - You can import components from other components.  This lets you make more complex things while keeping it modular.  One common place where this is done is in making different pages of a website; you could have a home page component that has multiple other components in it.  
 - Components can have css files to set the styling.  
+- Please make sure to add the `--save` keyword when you `npm install` anything - that makes sure to add the dependency to the package info so that when somebody runs `npm install` initially, they also install the package.
 
 Sending requests to backend 
 - We saw before how we can send requests to the backend using Postman.  All we need to be able to do from the frontend is to send the requests that we already tested and sent in Postman.  Axios lets us do this.  
