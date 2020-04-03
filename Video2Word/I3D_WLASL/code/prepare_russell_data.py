@@ -1,11 +1,26 @@
-#move all data into one place
-
-
-#make json file with the dictionary: {file_name: {"subset": data_split, "action":[class #, start index, last index]}}
 import os
 import cv2
 import json
+from shutil import copyfile
 
+
+#move all data into one place
+
+def make_copy_processed_data():
+    read_root = "/shared_space/asl_video"
+    dirs = ["val_processed", "train_processed", "test_processed"]
+    write_root = "/shared_space/asl_video/wlasl_data"
+    for d in dirs:
+        read = os.path.join(read_root, d)
+        write = os.path.join(write_root, d)
+        names = os.listdir(read)
+        for n in names:
+            read_file = os.path.join(read,n)
+            write_file = os.path.join(write,n)
+            copyfile(src, dst)
+
+
+#make json file with the dictionary: {file_name: {"subset": data_split, "action":[class #, start index, last index]}}
 def make_label_map():
     f_name = "preprocess/msasl_class_list.txt"
     with open(f_name, "r") as f:
@@ -49,7 +64,6 @@ def make_json():
                 data[n] = entry
     with open('preprocess/msasl.json','w') as f:
         json.dump(data,f)
-make_json()
 
 #fix classes with "index class" instead of just class
 
