@@ -54,14 +54,13 @@ def make_json():
             name = name.replace('\ufb01','fi')
             name = name.replace('#','')
 
-            cap = cv2.VideoCapture("video.mp4")
+            cap = cv2.VideoCapture(os.path.join(d,n))
             length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
             if name in label_map:
                 label = label_map[name]
                 entry["action"] = [label, 1, length]
 
-                data[n] = entry
+                data[n.split('.')[0]] = entry
     with open('preprocess/msasl.json','w') as f:
         json.dump(data,f)
 
@@ -80,3 +79,5 @@ def create_class_list():
         for i in range(len(class_strip)):
             write_str = str(i) + " " + class_strip[i]+"\n"
             f.write(write_str)
+
+make_json()
