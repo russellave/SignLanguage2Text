@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import Uploader from '../../components/uploader.jsx';
 import NavBar from '../../components/navbar/navbar.jsx';
 
-class TrialPage extends Component {
+class InfoPage extends Component {
 
     render() {
         return (
             <div>
                 <NavBar />
-                <Uploader />
+                This page will have information about the data and models used.
             </div>
         );
     }
 }
 
-export default TrialPage;
+export default InfoPage;
