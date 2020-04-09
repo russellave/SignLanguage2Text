@@ -32,15 +32,29 @@ args = parser.parse_args()
 def make_eval_json():
     data = {}
     d = "eval_vids" #where eval videos are
-
-    label_map = make_label_map()
     names = os.listdir(d)
     for n in names:
         entry = {}
         entry["subset"] = "test"
+        cap = cv2.VideoCapture(os.path.join(d,n))
+        length = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         entry["action"] = [0, 1, length]
         data[n.split('.')[0]] = entry
     return data
+
+def make_label_map():
+    f_name = "preprocess/msasl_class_list.txt"
+    with open(f_name, "r") as f:
+        classes = f.readlines()
+    strip = lambda x: x.strip()
+    class_strip = list(map(strip, classes))
+    class_map = {}
+    for c in class_strip:
+        a = c.split(" ")
+        index = int(a[0])
+        name = a[1]
+        class_map[index] = name
+    return class_map
 
 def run(init_lr=0.1,
         max_steps=64e3,
@@ -55,6 +69,8 @@ def run(init_lr=0.1,
     test_transforms = transforms.Compose([videotransforms.CenterCrop(224)])
 
     data = make_eval_json()
+    class_map = make_label_map()
+    
     val_dataset = Dataset(train_split, 'test', root, mode, data, num_classes, test_transforms)
     val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=1,
                                                  shuffle=False, num_workers=2,
@@ -74,7 +90,7 @@ def run(init_lr=0.1,
     i3d.cuda()
     i3d = nn.DataParallel(i3d)
     i3d.eval()
-
+    preds = []
     for data in dataloaders["test"]:
         inputs, labels, video_id = data  # inputs: b, c, t, h, w
 
@@ -83,13 +99,16 @@ def run(init_lr=0.1,
         predictions = torch.max(per_frame_logits, dim=2)[0]
         out_labels = np.argsort(predictions.cpu().detach().numpy()[0])
         out_probs = np.sort(predictions.cpu().detach().numpy()[0])
-        print(out_probs)
+        print(class_map[out_labels[-1]])
+        preds.append(class_map[out_labels[-1]])
+    return preds
+        
 
 if __name__ == '__main__':
     # ================== test i3d on a dataset ==============
     # need to add argparse
     mode = 'rgb'
-    num_classes = 1041
+    num_classes = 1042 #look at preprocess ms-asl class list
     save_model = './checkpoints/' #doesn't matter
 
     root = 'eval_vids' #where data is
