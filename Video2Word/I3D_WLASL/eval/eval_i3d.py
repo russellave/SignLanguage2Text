@@ -70,7 +70,7 @@ def run(init_lr=0.1,
 
     data = make_eval_json()
     class_map = make_label_map()
-    
+
     val_dataset = Dataset(train_split, 'test', root, mode, data, num_classes, test_transforms)
     val_dataloader = torch.utils.data.DataLoader(val_dataset, batch_size=1,
                                                  shuffle=False, num_workers=2,
@@ -102,7 +102,7 @@ def run(init_lr=0.1,
         print(class_map[out_labels[-1]])
         preds.append(class_map[out_labels[-1]])
     return preds
-        
+
 
 if __name__ == '__main__':
     # ================== test i3d on a dataset ==============
@@ -114,6 +114,6 @@ if __name__ == '__main__':
     root = 'eval_vids' #where data is
 
     train_split =  'preprocess/eval.json' #doesn't matter
-    weights = 'checkpoints/nslt_1042_011260_0.456225.pt' #where weights are
+    weights = 'weights/unproc_bs4_456225.pt' #where weights are
 
     run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
