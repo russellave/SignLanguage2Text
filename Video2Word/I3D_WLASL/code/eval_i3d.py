@@ -55,7 +55,7 @@ def load_rgb_frames_from_video(video_path, start=0, num=-1):
 
 def make_eval_json():
     data = {}
-    d = "../../eval_vids" #where eval videos are
+    d = "eval_vids" #where eval videos are
 
     label_map = make_label_map()
     names = os.listdir(d)
@@ -109,10 +109,6 @@ def run(init_lr=0.1,
         out_probs = np.sort(predictions.cpu().detach().numpy()[0])
 
 
-
-
-
-
 def run_on_tensor(weights, ip_tensor, num_classes):
     i3d = InceptionI3d(400, in_channels=3)
     # i3d.load_state_dict(torch.load('models/rgb_imagenet.pt'))
@@ -152,12 +148,11 @@ if __name__ == '__main__':
     # need to add argparse
     mode = 'rgb'
     num_classes = 1041
-    save_model = './checkpoints/'
+    save_model = './checkpoints/' #doesn't matter
 
-    root = '/shared_space/asl_video/wlasl_data_unproc'
+    root = 'eval_vids' #where data is
 
-    train_split =  'preprocess/msasl_unproc.json'
-    weights = 'archived/asl2000/FINAL_nslt_2000_iters=5104_top1=32.48_top5=57.31_top10=66.31.pt'
-    weights = 'checkpoints/nslt_1042_011260_0.456225.pt'
+    train_split =  'preprocess/eval.json' #doesn't matter
+    weights = 'checkpoints/nslt_1042_011260_0.456225.pt' #where weights are
 
     run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
