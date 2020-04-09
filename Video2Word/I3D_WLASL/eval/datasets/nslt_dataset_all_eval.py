@@ -102,7 +102,6 @@ def make_dataset(split_file, split, root, mode, num_classes, data):
         dataset.append((vid, data[vid]['action'][0], 0, num_frames, "{}".format(vid)))
         # dataset.append((vid, label, 0, data[vid]['action'][2] - data[vid]['action'][1], "{}".format(vid)))
         i += 1
-    print(len(dataset))
     return dataset
 
 
