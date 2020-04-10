@@ -4,3 +4,4 @@ opencv==4.1.2.30
 torch==1.4.0
 torchvision==0.5.0
 moviepy==1.0.1
+gunicorn
