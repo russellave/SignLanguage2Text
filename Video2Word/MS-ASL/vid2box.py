@@ -56,7 +56,7 @@ def resizedAndCrop(img, box):
     pad_right = max(box[1]-img.shape[1],0) #x2>num_cols->pad right is x2-num_cols
     pad_top = abs(min(box[2],0))
     pad_bottom = max(box[3]-img.shape[0],0)
- 
+
     # for i in range(3):
     img_padded = np.pad(img, ((pad_left, pad_right), (pad_top, pad_bottom), (0,0)), 'constant')
 
@@ -131,6 +131,7 @@ def makeCroppedVideo(pathOut, fps, pathIn):
         out.write(frame_array[i])
     out.release()
 
+
 def process_video(orig_file, out_file, box, width, height):
     full_vid_path = orig_file
     box_vid_path = out_file
@@ -178,6 +179,8 @@ if __name__ == '__main__':
 
         with open('MSASL_'+data_split+'.json') as f:
           data = json.load(f)
+        with open(data_split+'_boxes.json') as f:
+          boxes = json.load(f)
 
         #for if things got stuck
         if(data_split=='train'):
@@ -188,6 +191,7 @@ if __name__ == '__main__':
             init_point = 0
 
         end_point = len(data)
+        # end_point =40
         for i in range(init_point, end_point):
             #check if file was downloaded through protocol in download_umika.py
             ent = data[i]
@@ -206,8 +210,9 @@ if __name__ == '__main__':
             files = set(os.listdir(data_split+'_data'))
             if f_name in files:
                 full_vid_path = os.path.join(data_split+'_data',f_name)
-                box_vid_path = os.path.join(data_split+'_processed_2', f_name)
-                box_norm = ent['box']
+                box_vid_path = os.path.join(data_split+'_processed_bbox', f_name)
+                # box_norm = ent['box']
+                box_norm = boxes[f_name]
                 w = ent['width']
                 h = ent['height']
                 b = convertBbox(box_norm, w, h)
@@ -227,7 +232,7 @@ if __name__ == '__main__':
                         s = frame.shape
                         w_true = s[1]
                         h_true = s[0]
-                        
+
                         if w_true!=w or h_true!=h:
                             frame = cv2.resize(frame, (int(w), int(h)))
 
