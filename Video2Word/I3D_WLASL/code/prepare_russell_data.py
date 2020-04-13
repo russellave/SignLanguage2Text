@@ -8,16 +8,15 @@ from shutil import copyfile
 
 def make_copy_processed_data():
     read_root = "/shared_space/asl_video"
-    dirs = ["val_processed", "train_processed", "test_processed"]
-    write_root = "/shared_space/asl_video/wlasl_data"
+    dirs = ["val_processed", "train_processed", "test_processed"] #reading from all these dirs
+    write_root = "/shared_space/asl_video/wlasl_data" #adding to all these dirs
     for d in dirs:
         read = os.path.join(read_root, d)
-        write = os.path.join(write_root, d)
         names = os.listdir(read)
         for n in names:
             read_file = os.path.join(read,n)
-            write_file = os.path.join(write,n)
-            copyfile(src, dst)
+            write_file = os.path.join(write_root,n)
+            copyfile(read_file, write_file)
 
 
 #make json file with the dictionary: {file_name: {"subset": data_split, "action":[class #, start index, last index]}}
