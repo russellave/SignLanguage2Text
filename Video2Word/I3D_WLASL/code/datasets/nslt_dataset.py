@@ -140,15 +140,24 @@ def make_dataset(split_file, split, root, mode, num_classes):
 
 
 def get_num_class(split_file):
-    classes = set()
+#     classes = set()
 
+#     content = json.load(open(split_file))
+
+#     for vid in content.keys():
+#         class_id = content[vid]['action'][0]
+#         classes.add(class_id)
+
+#     return len(classes)
+    max_id = 0
+    
     content = json.load(open(split_file))
 
     for vid in content.keys():
         class_id = content[vid]['action'][0]
-        classes.add(class_id)
-
-    return len(classes)
+        if class_id>max_id: 
+            max_id = class_id
+    return max_id+1  
 
 
 class NSLT(data_utl.Dataset):
