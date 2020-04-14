@@ -205,12 +205,15 @@ def run(configs,
 if __name__ == '__main__':
     # WLASL setting
     mode = 'rgb'
-    root = {'word': '/shared_space/asl_video/wlasl_data'}
+#     root = {'word': '/shared_space/asl_video/wlasl_data_bbox_64'}
+    root = {'word': '/shared_space/asl_video/wlasl_data_unproc'}
 
     save_model = 'checkpoints/'
-    train_split = 'preprocess/msasl.json'
+#     train_split = 'preprocess/msasl_bbox_64.json'
+    train_split = 'preprocess/msasl_bbox_64.json'
 
     weights = 'archived/asl2000/FINAL_nslt_2000_iters=5104_top1=32.48_top5=57.31_top10=66.31.pt'
+    weights = 'checkpoints/nslt_1042_003878_0.266755.pt'
     config_file = 'configfiles/asl1000.ini'
 
     configs = Config(config_file)
