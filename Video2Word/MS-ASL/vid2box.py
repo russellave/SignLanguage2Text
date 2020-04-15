@@ -10,7 +10,7 @@ from os.path import isfile, join
 
 
 
-def convertBbox(box_norm, width, height, augment = True, fit_square= True):
+def convertBbox(box_norm, width, height, augment = True, fit_square= False):
     #spatial augmentation variables
     t_fac = .1 #%translation
     s_fac = .1 #%scaling
@@ -20,12 +20,12 @@ def convertBbox(box_norm, width, height, augment = True, fit_square= True):
     scale_y = random.uniform(-s_fac, s_fac)
 
     #convert box_norm x,y
-    x1 = box_norm[0]*width
-    y1 = box_norm[1]*height
+    x1 = box_norm[1]*width
+    y1 = box_norm[0]*height
 
     #convert box_norm weight and height and scale
-    box_width = box_norm[2]*width*(1-scale_x) #min 1-scale_x is .9, max is 1.1, which is 10% random scaling
-    box_height = box_norm[3]*height*(1-scale_y)
+    box_width = box_norm[3]*width*(1-scale_x) #min 1-scale_x is .9, max is 1.1, which is 10% random scaling
+    box_height = box_norm[2]*height*(1-scale_y)
 
     #translate box
     x1 = x1+trans_x*box_width #translate by up to +-10% of box
@@ -131,14 +131,58 @@ def makeCroppedVideo(pathOut, fps, pathIn):
         out.write(frame_array[i])
     out.release()
 
+
+def process_video(orig_file, out_file, box, width, height):
+    full_vid_path = orig_file
+    box_vid_path = out_file
+    box_norm = box
+    w = width
+    h = height
+    b = convertBbox(box_norm, w, h)
+
+
+
+    #clear temp_img_dir
+
+    #Concerned a little bit about this part regarding the existence of the temp_dir
+    temp_dir = 'temp_img/'
+    for filename in os.listdir(temp_dir):
+        os.unlink(os.path.join(temp_dir,filename))
+
+    #take each frame, resize and crop it, write it to temp_dir
+
+    cap = cv2.VideoCapture(full_vid_path)
+    ind = 1
+
+    temp_img_ext = '.jpg'
+    while True:
+        ret, frame = cap.read()
+        if(ret):
+
+            resized = resizedAndCrop(frame, b)
+            img_str = temp_dir+'image'+str(ind)+temp_img_ext
+            cv2.imwrite(img_str,resized)
+            ind+=1
+        else:
+            break
+
+    #sample 64 frames and then make video
+    choose64Frames(temp_dir)
+    makeCroppedVideo(box_vid_path, fps,temp_dir)
+
 if __name__ == '__main__':
+
+    #script to iterate through all of the datasets
     splits = ['train','test', 'val']
     for data_split in splits:
 
 
         with open('MSASL_'+data_split+'.json') as f:
           data = json.load(f)
+        with open(data_split+'_boxes.json') as f:
+          boxes = json.load(f)
 
+        #for if things got stuck
         if(data_split=='train'):
             init_point = 0
         if(data_split=='test'):
@@ -147,7 +191,9 @@ if __name__ == '__main__':
             init_point = 0
 
         end_point = len(data)
+        # end_point =40
         for i in range(init_point, end_point):
+            #check if file was downloaded through protocol in download_umika.py
             ent = data[i]
             url = ent["url"]
             gloss = ent["clean_text"]
@@ -164,8 +210,9 @@ if __name__ == '__main__':
             files = set(os.listdir(data_split+'_data'))
             if f_name in files:
                 full_vid_path = os.path.join(data_split+'_data',f_name)
-                box_vid_path = os.path.join(data_split+'_processed', f_name)
-                box_norm = ent['box']
+                box_vid_path = os.path.join(data_split+'_processed_bbox', f_name)
+                # box_norm = ent['box']
+                box_norm = boxes[f_name]
                 w = ent['width']
                 h = ent['height']
                 b = convertBbox(box_norm, w, h)
@@ -182,6 +229,12 @@ if __name__ == '__main__':
                 while True:
                     ret, frame = cap.read()
                     if(ret):
+                        s = frame.shape
+                        w_true = s[1]
+                        h_true = s[0]
+
+                        if w_true!=w or h_true!=h:
+                            frame = cv2.resize(frame, (int(w), int(h)))
 
                         resized = resizedAndCrop(frame, b)
                         img_str = temp_dir+'image'+str(ind)+temp_img_ext

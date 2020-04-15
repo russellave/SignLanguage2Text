@@ -1,9 +1,6 @@
 import React, { Component } from "react"
-
-
 import axios from 'axios';
 
-var Base64 = require('js-base64').Base64;
 
 function wait(ms){
     var start = new Date().getTime();
@@ -13,7 +10,7 @@ function wait(ms){
    }
  }
 
-class Uploader extends React.Component {
+class Uploader extends Component {
 
     constructor(props) {
         super(props);
@@ -58,7 +55,7 @@ class Uploader extends React.Component {
     sayHi = () => {
         const data = new FormData();
         data.append('name', this.state.name)
-        axios.post("http://localhost:5000/caroline", data). then(res => {
+        axios.post("http://localhost:5000/caroline", data).then(res => {
             console.log(res);
             this.setState({
                 display_str: res.data

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "js-base64": "^2.5.2",
@@ -12,6 +13,7 @@
     "nodemon": "^2.0.2",
     "react": "^16.13.0",
     "react-animations": "^1.0.0",
+    "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.0",
     "react-fade-in": "^0.1.8",
     "react-helmet": "^5.2.1",

@@ -68,17 +68,32 @@ def run(configs,
     else:
         i3d = InceptionI3d(400, in_channels=3)
         i3d.load_state_dict(torch.load('weights/rgb_imagenet.pt'))
-
+        
     num_classes = dataset.num_classes
     i3d.replace_logits(num_classes)
 
     if weights:
-        print('loading weights {}'.format(weights))
-        i3d.load_state_dict(torch.load(weights))
-
+        ##next three lines are previous
+#         print('loading weights {}'.format(weights))
+#         i3d.load_state_dict(torch.load(weights))
+#         print('done with weights')
+        ##these are mine
+        #if layers are different sizes: 
+        pretrained_dict = torch.load(weights)
+        model_dict = i3d.state_dict()
+        # 1. filter out unnecessary keys
+        pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
+        # 2. overwrite entries in the existing state dict
+        model_dict.update(pretrained_dict) 
+        # 3. load the new state dict
+        i3d.load_state_dict(model_dict)
+    
+    print('skipped weights')
     i3d.cuda()
+    print('done cuda')
     i3d = nn.DataParallel(i3d)
-
+    print('parallel done')
+    
     lr = configs.init_lr
     weight_decay = configs.adam_weight_decay
     optimizer = optim.Adam(i3d.parameters(), lr=lr, weight_decay=weight_decay)
@@ -190,14 +205,17 @@ def run(configs,
 if __name__ == '__main__':
     # WLASL setting
     mode = 'rgb'
-    root = {'word': 'data/WLASL2000'}
+#     root = {'word': '/shared_space/asl_video/wlasl_data_bbox_64'}
+    root = {'word': '/shared_space/asl_video/wlasl_data_unproc'}
 
     save_model = 'checkpoints/'
-    train_split = 'preprocess/nslt_2000.json'
+#     train_split = 'preprocess/msasl_bbox_64.json'
+    train_split = 'preprocess/msasl_bbox_64.json'
 
     weights = 'archived/asl2000/FINAL_nslt_2000_iters=5104_top1=32.48_top5=57.31_top10=66.31.pt'
-    config_file = 'configfiles/asl2000.ini'
+    weights = 'checkpoints/nslt_1042_003878_0.266755.pt'
+    config_file = 'configfiles/asl1000.ini'
 
     configs = Config(config_file)
     print(root, train_split)
-    run(configs=configs, mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights)
+    run(configs=configs, mode=mode, root=root, save_model=save_model, train_split=train_split, weights=None)
