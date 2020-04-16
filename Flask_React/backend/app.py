@@ -155,6 +155,15 @@ def hi_caroline():
     except:
         abort(404)
 
+@app.route('/gen_text', methods=['POST','OPTIONS'])
+def generate_story():
+    # input text is request.form['input']
+    try:
+        return Response(response='ABCD '+request.form['input'], status=200)
+    except:
+        print('aborting')
+        abort(404)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host = '0.0.0.0', port=5000)
