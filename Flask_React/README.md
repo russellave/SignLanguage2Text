@@ -1,7 +1,21 @@
 # Disclaimers:
-This may be in more detail/have more explanation than you need, but I went for more just in case anyone needs it (I would have needed it).  Also, some of the terminology could be wrong or imprecise - this is my best guess at the right words based on a few days of learning this stuff.  
 
-I have a PC.  I think things should be the same for Mac, but I make no promises.
+Instructions are for PC. Mac analogs should be straightforward.
+
+Caroline's code and documentation is immaculate. If it isn't working, it's because Lucas changed something.
+
+# Lucas Additional Notes
+
+run generate.py first to download model into backend folder
+
+Uses tensorflow version 1.15
+
+Need to download checkpoint tar folder from our google drive (model weights too large), and unzip inside backend directory
+
+Some commands had to be run as root/Administrator if there were insufficient permissions
+
+frontend I had to run the command `npm run start`
+
 
 # How I get it to run on my laptop:
 

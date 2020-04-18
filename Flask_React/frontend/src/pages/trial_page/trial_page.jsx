@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Uploader from '../../components/uploader.jsx';
 import NavBar from '../../components/navbar/navbar.jsx';
 
 class TrialPage extends Component {
@@ -8,7 +7,6 @@ class TrialPage extends Component {
         return (
             <div>
                 <NavBar />
-                <Uploader />
             </div>
         );
     }
