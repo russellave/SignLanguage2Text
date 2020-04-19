@@ -23,7 +23,7 @@ CORS(app)
 
 # load in weights and classes
 sess = gpt2.start_tf_sess()
-gpt2.load_gpt2(sess, run_name='run1')
+gpt2.load_gpt2(sess, run_name='play')
 
 @app.route('/caroline', methods=['POST','OPTIONS'])
 def hi_caroline():
@@ -46,9 +46,11 @@ def generate_story():
         tf.reset_default_graph()
         sess.close()
         sess = gpt2.start_tf_sess()
-        gpt2.load_gpt2(sess)
+        gpt2.load_gpt2(sess, run_name=request.form['genre'])
+        print("GENRE")
+        print(request.form['genre'])
         generated_text = gpt2.generate(sess,
-              run_name='run1',
+              run_name=request.form['genre'],
               length=200,
               temperature=0.8,
               prefix=str(request.form['input']),

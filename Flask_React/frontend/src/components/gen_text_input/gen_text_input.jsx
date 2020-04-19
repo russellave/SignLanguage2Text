@@ -7,7 +7,8 @@ class GenTextInput extends Component {
         super(props);
         this.state = {
             input_text: '',
-            display_str: ''
+            display_str: '',
+            genre: this.props.genre
         }
     }
 
@@ -21,6 +22,7 @@ class GenTextInput extends Component {
     generate = () => {
         const data = new FormData();
         data.append('input', this.state.input_text)
+        data.append('genre', this.state.genre)
         console.log(data)
         axios.post("http://localhost:5000/gen_text", data).then(res => {
             console.log(res);

@@ -9,7 +9,11 @@ class GenTextPage extends Component {
         return (
             <div>
                 <NavBar />
-                <GenTextInput />
+                <h2>Shakespeare</h2>
+                <GenTextInput genre="play" />
+
+                <h2>Talk Show</h2>
+                <GenTextInput genre="news" />
             </div>
         );
     }
