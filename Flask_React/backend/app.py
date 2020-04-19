@@ -196,6 +196,7 @@ def video_to_text():
     print(type(pred))
     try:
         return Response(response= pred, status=200)
+
     except:
         print('aborting vid2text')
         abort(404)
