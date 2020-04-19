@@ -155,6 +155,33 @@ def hi_caroline():
     except:
         abort(404)
 
+@app.route('/gen_text', methods=['POST','OPTIONS'])
+def generate_story():
+    # input text is request.form['input']
+    try:
+        return Response(response='ABCD '+request.form['input'], status=200)
+    except:
+        print('aborting gen text')
+        abort(404)
+
+@app.route('/vid2text', methods=['POST','OPTIONS'])
+def video_to_text():
+    print('in video to text')
+    print('**************************************************')
+    print("Here is the request: ", request)
+    print('**************************************************')
+    print("Here is request.files:", request.files)
+    # input video is request.files['video']
+    video = request.files['video']
+    video_name = video.filename
+    try:
+        return Response(response='This should return the word translation from that video,' + 
+            'but right now it is the filename so that some text relevant to the video is returned: ' 
+            + video_name, status=200)
+    except:
+        print('aborting vid2text')
+        abort(404)
+
 
 if __name__ == '__main__':
     app.run(debug=True, host = '0.0.0.0', port=5000)

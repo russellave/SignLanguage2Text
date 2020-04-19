@@ -90,7 +90,7 @@ class Uploader extends Component {
                             <br/>
                             <button type="button" class="btn btn-primary" onClick={this.sayHi}>Say Hi</button>
                             {
-                                this.state.display_str != '' ? 
+                                this.state.display_str !== '' ? 
                                 <h1> {this.state.display_str} </h1>
                                 :
                                 <h1> didn't ask me to say hi yet :( </h1>
