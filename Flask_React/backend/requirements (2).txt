@@ -1,11 +1,4 @@
-tensorflow==1.15
-opencv-python==4.1.1.26
-lxml
-tqdm
-flask
-seaborn
-pillow
-flask-cors
+python==3.7.3
 numpy==1.16.4
 opencv==4.1.2.30
 torch==1.4.0

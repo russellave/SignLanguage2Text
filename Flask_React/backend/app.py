@@ -12,6 +12,7 @@ from flask import Flask, request, Response, jsonify, send_from_directory, abort
 from flask_cors import CORS
 # from flask.ext.cors import CORS, cross_origin
 import os
+from eval_i3d import run 
 
 # customize your API through the following parameters
 classes_path = './data/labels/coco.names'
@@ -174,10 +175,28 @@ def video_to_text():
     # input video is request.files['video']
     video = request.files['video']
     video_name = video.filename
+
+    for f in os.listdir(os.path.join(os.getcwd(), 'eval_vids')):
+        os.remove(os.path.join(os.getcwd(), 'eval_vids', f))
+    video.save(os.path.join(os.getcwd(), 'eval_vids', video_name))
+
+
+    mode = 'rgb'
+    num_classes = 1042 #look at preprocess ms-asl class list
+    save_model = './checkpoints/' #doesn't matter
+
+    root = 'eval_vids' #where data is
+
+    train_split =  'preprocess/eval.json' #doesn't matter
+    weights = 'weights/unproc_bs4_456225.pt' #where weights are
+
+    pred = '0'
+    pred = run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
+    print ('prediction received in app.py: ', pred)
+    print(type(pred))
     try:
-        return Response(response='This should return the word translation from that video,' + 
-            'but right now it is the filename so that some text relevant to the video is returned: ' 
-            + video_name, status=200)
+        return Response(response= pred, status=200)
+
     except:
         print('aborting vid2text')
         abort(404)
