@@ -70,17 +70,16 @@ class TranslationInput extends Component {
 
             <div>
                 {
-                    this.state.display_str == '' ?
+                    this.state.display_str === '' ?
                         <div>
                             <input type="file" className="form-control" multiple="" onChange={this.updateFile} />
-                            <button type="button" className="btn btn-success btn-block" onClick={this.getTranslation}>Get Word Level Translation</button>
-                            <h1> didn't translate yet :( </h1>
+                            <button type="button" className="btn-submit" onClick={this.getTranslation}>Submit Video</button>
                         </div>
                         :
 
                         <div>
                             {
-                                this.state.sentence == '' ?
+                                this.state.sentence === '' ?
 
                                     this.state.new_input ?
                                         <div>
