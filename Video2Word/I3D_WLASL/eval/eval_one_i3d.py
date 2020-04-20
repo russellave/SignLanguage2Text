@@ -145,4 +145,4 @@ if __name__ == '__main__':
     num_frames = int(cv2.VideoCapture(vid_path).get(cv2.CAP_PROP_FRAME_COUNT))
     video = load_rgb_frames_from_video(vid_path,0,num_frames)
     
-    run(video,mode=mode, weights=weights, num_classes = num_classes)
+    run(video)
