@@ -2,23 +2,16 @@ import math
 import os
 import argparse
 
-import matplotlib.pyplot as plt
 
 import torch
 import torch.nn as nn
-
-from torchvision import transforms
-import videotransforms
 
 import numpy as np
 
 import torch.nn.functional as F
 from pytorch_i3d import InceptionI3d
 
-# from nslt_dataset_all import NSLT as Dataset
-from datasets.nslt_dataset_all_eval import NSLT as Dataset
 import cv2
-
 
 
 parser = argparse.ArgumentParser()
