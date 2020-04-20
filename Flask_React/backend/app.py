@@ -8,12 +8,18 @@ from flask_cors import CORS
 import os
 from eval_i3d import run 
 from w2s import init_and_load_model, translate_sentence
+import gpt_2_simple as gpt2
 
 
 # load in weights and classes
 physical_devices = tf.config.experimental.list_physical_devices('GPU')
 if len(physical_devices) > 0:
     tf.config.experimental.set_memory_growth(physical_devices[0], True)
+
+
+# load in weights and classes
+sess = gpt2.start_tf_sess()
+gpt2.load_gpt2(sess, run_name='play')
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -22,10 +28,29 @@ CORS(app)
 
 @app.route('/gen_text', methods=['POST','OPTIONS'])
 def generate_story():
+    global sess
     # input text is request.form['input']
+
     try:
-        return Response(response='ABCD '+request.form['input'], status=200)
+        tf.reset_default_graph()
+        sess.close()
+        sess = gpt2.start_tf_sess()
+        gpt2.load_gpt2(sess, run_name=request.form['genre'])
+        print("GENRE")
+        print(request.form['genre'])
+        generated_text = gpt2.generate(sess,
+              run_name=request.form['genre'],
+              length=200,
+              temperature=0.8,
+              prefix=str(request.form['input']),
+              nsamples=1,
+              batch_size=1,
+              return_as_list=True
+              )[0]
+        return Response(response=generated_text, status=200)
+
     except:
+        traceback.print_exc(file=sys.stdout)
         print('aborting gen text')
         abort(404)
 
