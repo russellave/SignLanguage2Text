@@ -57,7 +57,7 @@ def make_label_map():
         class_map[index] = name
     return class_map
 
-def run(        init_lr=0.1,
+def run(init_lr=0.1,
         max_steps=64e3,
         mode='rgb',
         root='/ssd/Charades_v1_rgb',
