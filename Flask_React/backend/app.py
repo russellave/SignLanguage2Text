@@ -56,10 +56,12 @@ def generate_story():
 
 @app.route('/w2s', methods=['POST','OPTIONS'])
 def generate_sentence():
+    print('in w2s')
     # input text is request.form['input']
     model_path  = './cc_model_5p.pt'
     model = init_and_load_model(model_path)
     sentence, logits = translate_sentence(model, request.form['input'])
+    print('sentence: ', sentence)
 
     try:
         return Response(response=sentence, status=200)
