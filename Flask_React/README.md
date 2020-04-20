@@ -3,6 +3,10 @@ This may be in more detail/have more explanation than you need, but I went for m
 
 I have a PC.  I think things should be the same for Mac, but I make no promises.
 
+# Word to Sentences extra steps:
+`python -m spacy download en_core_web_sm`
+added spacy and torchtext to requirements.txt
+
 # How I get it to run on my laptop:
 
 ## To install all the libraries and such that you'll need so far: 

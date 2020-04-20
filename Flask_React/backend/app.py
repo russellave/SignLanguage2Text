@@ -7,6 +7,7 @@ from flask import Flask, request, Response, jsonify, send_from_directory, abort
 from flask_cors import CORS
 import os
 from eval_i3d import run 
+from w2s import init_and_load_model, translate_sentence
 
 
 # load in weights and classes
@@ -31,8 +32,12 @@ def generate_story():
 @app.route('/w2s', methods=['POST','OPTIONS'])
 def generate_sentence():
     # input text is request.form['input']
+    model_path  = './cc_model_5p.pt'
+    model = init_and_load_model(model_path)
+    sentence, logits = translate_sentence(model, request.form['input'])
+
     try:
-        return Response(response='ABCD '+request.form['input'], status=200)
+        return Response(response=sentence, status=200)
     except:
         print('aborting w2s text')
         abort(404)

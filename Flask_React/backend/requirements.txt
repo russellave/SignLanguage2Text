@@ -1,3 +1,5 @@
+spacy 
+torchtext
 tensorflow==1.15
 opencv-python==4.1.1.26
 lxml
