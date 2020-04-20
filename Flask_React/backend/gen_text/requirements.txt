@@ -1,0 +1,9 @@
+Flask==1.1.2
+gunicorn==20.0.4
+grpcio==1.21.1
+numpy==1.16.4
+tensorflow==1.13.1
+lxml
+tqdm
+flask-cors
+gpt-2-simple

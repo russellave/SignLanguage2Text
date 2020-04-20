@@ -24,7 +24,9 @@ class GenTextInput extends Component {
         data.append('input', this.state.input_text)
         data.append('genre', this.state.genre)
         console.log(data)
-        axios.post("http://localhost:5000/gen_text", data).then(res => {
+        // axios.post("http://localhost:5000/gen_text", data).then(res => {
+        axios.post("https://sign2textbackend.appspot.com/gen_text", data).then(res => {
+
             console.log(res);
             this.setState({
                 display_str: res.data

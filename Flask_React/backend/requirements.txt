@@ -1,8 +1,14 @@
-tensorflow==1.15
-opencv-python==4.1.1.26
+Flask==1.1.2
+gunicorn==20.0.4
+grpcio==1.21.1
+numpy==1.16.4
+torch==1.4.0
+torchvision==0.5.0
+moviepy==1.0.1
+tensorflow==1.13.1
+opencv-python==4.1.2.30
 lxml
 tqdm
-flask
 seaborn
 pillow
 flask-cors
