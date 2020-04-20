@@ -9,7 +9,9 @@
 /Untitled.ipynb
 /output.jpg
 /data/voc2012_raw/
-/backend/checkpoints/*
+/backend/checkpoint/*
+/backend/models/*
+
 
 # Created by https://www.gitignore.io/api/python
 # Edit at https://www.gitignore.io/?templates=python
