@@ -1,0 +1,12 @@
+Flask==1.1.2
+absl-py
+requests
+gunicorn==20.0.4
+grpcio==1.21.1
+lxml
+flask-cors
+spacy
+torchtext
+pandas
+torch==1.4.0
+numpy==1.16.4
