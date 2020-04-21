@@ -1,20 +1,114 @@
 .btn-submit{
     font-family: 'Raleway', sans-serif;
-    width: 150px;
-    height: 40px;
-    border-radius: 15px;
+    width: 125px;
+    height: 32px;
+    border-radius: 5px;
     border-color: #314455;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     border: none;
     background-color: #c25254;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 48%;
 }
 
 .btn-submit:hover{
     border-color: #314455;
     color: white;
     background-color: #d0787a;
-    font-weight: bold;
-    font-size: 20px;
     border: none;
+}
+
+.btn-or-sub{
+    font-family: 'Raleway', sans-serif;
+    width: 125px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 36%;
+}
+
+.btn-or-sub:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.btn-done{
+    font-family: 'Raleway', sans-serif;
+    width: 150px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #63809c;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 48%;
+}
+
+.btn-done:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #8399af;
+    border: none;
+}
+
+.btn-upload-another{
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 50%;
+    top: 41%;
+    transform: translate(-50%, 0%);
+}
+
+.btn-upload-another:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.file-upload{
+    position: relative;
+    left: 40%;
+    top: 50%;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control-tr{
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+.tr-result{
+    font-family: 'Raleway', sans-serif;
+    font-weight: thin;
+    font-size: 30px;
+    margin: 30px;
 }

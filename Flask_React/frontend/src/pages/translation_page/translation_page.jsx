@@ -19,6 +19,7 @@ class TranslationPage extends Component {
                     Once each video is uploaded and translated at the word level, you will be able to upload another if desired.  
                     When you have finished uploading all the videos, hit <i>Done Uploading</i> to get the sentence level translation.  
                     </p>
+                    <hr/>
                 </div>
                 <br/>
                 <TranslationInput/>
