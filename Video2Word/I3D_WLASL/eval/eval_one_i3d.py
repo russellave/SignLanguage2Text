@@ -137,7 +137,8 @@ if __name__ == '__main__':
 
     
 
-    weights = 'weights/unproc_bs4_456225.pt' #where weights are
+    #weights = 'weights/unproc_bs4_456225.pt' #where weights are
+    weights = 'weights/nslt_1042_007480_0.516498.pt'
     vid_path = args.vid_path
 
     
