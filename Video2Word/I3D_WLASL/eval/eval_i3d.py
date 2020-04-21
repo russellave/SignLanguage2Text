@@ -20,8 +20,8 @@ from datasets.nslt_dataset_all_eval import NSLT as Dataset
 import cv2
 
 
-os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+#os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+#os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 parser = argparse.ArgumentParser()
 parser.add_argument('-mode', type=str, help='rgb or flow')
 parser.add_argument('-save_model', type=str)
@@ -87,8 +87,8 @@ def run(init_lr=0.1,
         i3d.load_state_dict(torch.load('weights/rgb_imagenet.pt'))
     i3d.replace_logits(num_classes)
     i3d.load_state_dict(torch.load(weights))  # nslt_2000_000700.pt nslt_1000_010800 nslt_300_005100.pt(best_results)  nslt_300_005500.pt(results_reported) nslt_2000_011400
-    i3d.cuda()
-    i3d = nn.DataParallel(i3d)
+    #i3d.cuda()
+    #i3d = nn.DataParallel(i3d)
     i3d.eval()
     preds = []
     for data in dataloaders["test"]:
