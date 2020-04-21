@@ -11,7 +11,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    top: 48%;
+    top: 68%;
 }
 
 .btn-submit:hover{
@@ -34,7 +34,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    top: 36%;
+    top: 56%;
 }
 
 .btn-or-sub:hover{
@@ -57,7 +57,7 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
-    top: 48%;
+    top: 68%;
 }
 
 .btn-done:hover{
@@ -79,7 +79,7 @@
     background-color: #c25254;
     position: absolute;
     left: 50%;
-    top: 41%;
+    top: 61%;
     transform: translate(-50%, 0%);
 }
 
@@ -93,7 +93,7 @@
 .file-upload{
     position: relative;
     left: 40%;
-    top: 50%;
+    top: 80%;
     border: 0;
     outline: none;
     box-shadow: none;
@@ -111,4 +111,5 @@
     font-weight: thin;
     font-size: 30px;
     margin: 30px;
+    margin-left: 160px
 }
