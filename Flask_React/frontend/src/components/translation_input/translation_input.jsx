@@ -10,7 +10,8 @@ class TranslationInput extends Component {
             display_str: '',
             new_input: false,
             done_uploading: false,
-            sentence: ''
+            sentence: '',
+            words: ''
         }
     }
 
@@ -32,11 +33,14 @@ class TranslationInput extends Component {
     doneUploadingVid = () => {
         // translate word to sentence now 
         this.setState({
-            done_uploading: true
+            done_uploading: true,
+            words: this.state.display_str
         })
+    }
 
+    getSentence = () => {
         const data = new FormData();
-        data.append('input', this.state.display_str)
+        data.append('input', this.state.words)
         console.log(data)
         axios.post("http://localhost:5000/w2s", data).then(res => {
             console.log(res);
@@ -45,7 +49,6 @@ class TranslationInput extends Component {
             })
         }
         )
-
     }
 
     getTranslation = () => {
@@ -61,6 +64,12 @@ class TranslationInput extends Component {
                 responseStatusOK: (res.status === 200),
                 new_input: false
             })
+        })
+    }
+
+    updateWords = (event) => {
+        this.setState({
+            words: event.target.value
         })
     }
 
@@ -81,7 +90,7 @@ class TranslationInput extends Component {
 
                         <div>
                             {
-                                this.state.sentence === '' ?
+                                !this.state.done_uploading ?
 
                                     this.state.new_input ?
                                         <div>
@@ -101,7 +110,15 @@ class TranslationInput extends Component {
                                     :
 
                                     <div>
-                                            <p className="tr-result"> Sentence-level translation: {this.state.sentence}</p>
+                                        <p className="tr-result tr-in">Input to words to sentence translator: </p>
+                                        <input type="text" className="input-text" placeholder ={this.state.words} onChange={this.updateWords}/>
+                                        <button type="button" className="btn-sent" onClick={this.getSentence}>Get Sentence-Level Translation</button>
+                                        {
+                                            this.state.sentence === '' ?
+                                            <br/>
+                                            : 
+                                            <p className="tr-result tr-sent"> Translation: <span className="res">{this.state.sentence}</span></p>
+                                        }
                                        
                                     </div>
                             }

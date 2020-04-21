@@ -17,7 +17,7 @@ class TranslationPage extends Component {
                     <p> 
                     To translate from ASL to English, upload a video of an ASL sign below.  
                     Once each video is uploaded and translated at the word level, you will be able to upload another if desired.  
-                    When you have finished uploading all the videos, hit <i>Done Uploading</i> to get the sentence level translation.  
+                    When you have finished uploading all the videos, hit <i>Done Uploading</i> to get the sentence level translation section.  
                     </p>
                     <hr/>
                 </div>
