@@ -11,3 +11,14 @@ resources:
   cpu: 1
   memory_gb: 0.5
   disk_size_gb: 10
+
+readiness_check:
+  timeout_sec: 100
+  check_interval_sec: 150
+  app_start_timeout_sec: 1600
+
+liveness_check:
+  initial_delay_sec: 500
+  check_interval_sec: 250
+  timeout_sec: 200
+  failure_threshold: 4
