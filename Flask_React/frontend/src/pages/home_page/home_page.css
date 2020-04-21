@@ -1,32 +1,35 @@
 .main-title{
     
-    color: white;
-    font-size: 100px;
-    line-height: 100px;
-    position: absolute;
-    left: 45%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Raleway', sans-serif;
-    font-weight: thin;
-    animation-name: fade-in-left;
-    animation-duration: 2s;
+  color: white;
+  font-size: 100px;
+  line-height: 100px;
+  position: absolute;
+  left: 45%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Raleway', sans-serif;
+  font-weight: thin;
+  animation-name: fade-in-left;
+  animation-duration: 2s;
 }
 
 
+
+
+
 .it-subheading{
-    color: white;
-    font-size: 30px;
-    line-height: 30px;
-    position: absolute;
-    left: 45%;
-    top: 70%;
-    transform: translate(-50%, -50%);
-    font-family: 'Raleway', sans-serif;
-    font-weight: thin;
-    font-style: italic;
-    animation-name: fade-in-bottom;
-    animation-duration: 2s;
+  color: white;
+  font-size: 30px;
+  line-height: 30px;
+  position: absolute;
+  left: 45%;
+  top: 70%;
+  transform: translate(-50%, -50%);
+  font-family: 'Raleway', sans-serif;
+  font-weight: thin;
+  font-style: italic;
+  animation-name: fade-in-bottom;
+  animation-duration: 2s;
 }
 
 .btn-lg{
@@ -40,6 +43,7 @@
     border: none;
     animation-name: fade-in-right;
     animation-duration: 2s;
+
 }
 
 .btn-lg-red{
@@ -53,10 +57,10 @@
 .btn-lg-red:hover{
     background-color: #c25254;
     color: white;
-    position: absolute;
+    /* position: absolute;
     left: 70%;
     top: 46%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
 }
 
 .btn-lg-gray{
@@ -70,10 +74,40 @@
 .btn-lg-gray:hover{
     background-color: #97aabd;
     color: white;
-    position: absolute;
+    /* position: absolute;
     left: 70%;
     top: 60%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
+}
+
+@media (max-width: 933px) {
+  .it-subheading{
+    top: 73%;
+  }
+  .main-title {
+    text-align: center;
+  }
+
+}
+
+@media (max-width: 1187px) {
+  .btn-lg-red{
+    top: 83%;
+    left: 45%;
+  }
+  .btn-lg-gray{
+    top: 94%;
+    left: 45%;
+  }
+}
+
+@media (max-width: 567px) {
+  .main-title {
+    font-size: 80px;
+  }
+  .it-subheading {
+    font-size: 25px;
+  }
 }
 
 .fade-in-left {
