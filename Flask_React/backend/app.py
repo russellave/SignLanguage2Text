@@ -94,7 +94,7 @@ def video_to_text():
     train_split =  'preprocess/eval.json' #doesn't matter
     weights = 'weights/unproc_bs4_456225.pt' #where weights are
 
-    pred = '0'
+    pred = 'test'
     # pred = run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
     print ('prediction received in app.py: ', pred)
     print(type(pred))
