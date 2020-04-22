@@ -11,7 +11,9 @@ class TranslationInput extends Component {
             new_input: false,
             done_uploading: false,
             sentence: '',
-            words: ''
+            words: '',
+            gen_in: '',
+            gen_out: ''
         }
     }
 
@@ -45,7 +47,8 @@ class TranslationInput extends Component {
         axios.post("http://localhost:5000/w2s", data).then(res => {
             console.log(res);
             this.setState({
-                sentence: res.data
+                sentence: res.data,
+                gen_in: res.data
             })
         }
         )
@@ -71,6 +74,42 @@ class TranslationInput extends Component {
         this.setState({
             words: event.target.value
         })
+    }
+
+    updateGenIn = (event) => {
+        this.setState({
+            gen_in: event.target.value
+        })
+    }
+
+    getStory = () => {
+        const data = new FormData();
+        data.append('input', this.state.gen_in)
+        data.append('genre', 'news')
+        console.log(data)
+        axios.post("http://localhost:5000/gen_text", data).then(res => {
+            console.log(res);
+            this.setState({
+                gen_out: res.data
+            })
+        }
+        )
+
+    }
+
+    getPlay = () => {
+        const data = new FormData();
+        data.append('input', this.state.gen_in)
+        data.append('genre', 'play')
+        console.log(data)
+        axios.post("http://localhost:5000/gen_text", data).then(res => {
+            console.log(res);
+            this.setState({
+                gen_out: res.data
+            })
+        }
+        )
+
     }
 
 
@@ -109,6 +148,8 @@ class TranslationInput extends Component {
 
                                     :
 
+                                    this.state.gen_out === '' ?
+
                                     <div>
                                         <p className="tr-result tr-in">Input to words to sentence translator: </p>
                                         <input type="text" className="input-text" placeholder ={this.state.words} onChange={this.updateWords}/>
@@ -117,9 +158,23 @@ class TranslationInput extends Component {
                                             this.state.sentence === '' ?
                                             <br/>
                                             : 
-                                            <p className="tr-result tr-sent"> Translation: <span className="res">{this.state.sentence}</span></p>
+                                            <div>
+                                                <p className="tr-result tr-sent"> Translation: <span className="res">{this.state.sentence}</span></p>
+                                                
+                                                <button type="button" className="btn-story" onClick={this.getStory}>Tell Me a Story</button>
+                                                <button type="button" className="btn-play" onClick={this.getPlay}>Write Me a Play</button>
+                                                starting with: <input type="text" className="input-text-gen" placeholder ={this.state.sentence} onChange={this.updateGenIn}/>
+                                               
+                                            </div>
+                                            
                                         }
                                        
+                                    </div>
+
+                                    :
+
+                                    <div className='gen-out'>
+                                        {this.state.gen_out}
                                     </div>
                             }
                         </div>
