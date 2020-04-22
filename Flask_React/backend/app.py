@@ -62,6 +62,8 @@ def generate_sentence():
     model = init_and_load_model(model_path)
     sentence, logits = translate_sentence(model, request.form['input'])
     print('sentence: ', sentence)
+    sentence = sentence.capitalize()
+    sentence = sentence[:-2] + sentence[-1]
 
     try:
         return Response(response=sentence, status=200)
@@ -95,7 +97,7 @@ def video_to_text():
     weights = 'weights/unproc_bs4_456225.pt' #where weights are
 
     pred = 'test'
-    # pred = run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
+    pred = run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
     print ('prediction received in app.py: ', pred)
     print(type(pred))
     try:
