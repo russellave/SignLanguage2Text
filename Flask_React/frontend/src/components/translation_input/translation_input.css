@@ -123,8 +123,9 @@
     border: none;
     background-color: #c25254;
     position: absolute;
-    left: 43.5%;
-    top: 70%;
+    left: 40%;
+    transform: translate(-50%, 0%);
+    margin-top: 70px;
 }
 
 .btn-story:hover{
@@ -165,8 +166,9 @@
     border: none;
     background-color: #c25254;
     position: absolute;
-    left: 63.5%;
-    top: 70%;
+    left: 60%;
+    transform: translate(-50%, 0%);
+    margin-top: 70px;
 }
 
 .btn-play:hover{
