@@ -55,7 +55,9 @@ class TranslationInput extends Component {
 
     getSentence = () => {
         const data = new FormData();
-        data.append('input', this.state.words)
+        console.log('in getSentence')
+        console.log(this.state)
+        data.append('input', this.state.display_str)
         console.log(data)
         axios.post("http://localhost:5000/w2s", data).then(res => {
             console.log(res);
