@@ -70,37 +70,39 @@ class TranslationInput extends Component {
 
             <div>
                 {
-                    this.state.display_str == '' ?
+                    this.state.display_str === '' ?
                         <div>
-                            <input type="file" className="form-control" multiple="" onChange={this.updateFile} />
-                            <button type="button" className="btn btn-success btn-block" onClick={this.getTranslation}>Get Word Level Translation</button>
-                            <h1> didn't translate yet :( </h1>
+                            <div className='file-upload'>
+                                <input type="file" className="form-control-tr" multiple="" onChange={this.updateFile} />
+                            </div>
+                            <button type="button" className="btn-or-sub" onClick={this.getTranslation}>Submit Video</button>
                         </div>
                         :
 
                         <div>
                             {
-                                this.state.sentence == '' ?
+                                this.state.sentence === '' ?
 
                                     this.state.new_input ?
                                         <div>
-                                            <h1> Inputting next video  </h1>
-                                            <input type="file" className="form-control" multiple="" onChange={this.updateFile} />
-                                            <button type="button" className="btn btn-success btn-block" onClick={this.getTranslation}>Get Word Level Translation</button>
+                                            <p className="tr-result"> Current word-level translation(s): {this.state.display_str}</p>
+                                            <div className="file-upload"> 
+                                                <input type="file" className="form-control-tr" multiple="" onChange={this.updateFile} />
+                                            </div>
+                                            <button type="button" className="btn-submit" onClick={this.getTranslation}>Submit Video</button>
                                         </div>
                                         :
                                         <div>
-                                            <h1> Translated last video, waiting for next move </h1>
-                                            <h1> {this.state.display_str} </h1>
-                                            <button type="button" className="btn btn-success btn-block" onClick={this.getAnotherVid}>Upload Another Video</button>
-                                            <button type="button" className="btn btn-success btn-block" onClick={this.doneUploadingVid}>Done Uploading</button>
+                                            <p className="tr-result"> Current word-level translation(s): {this.state.display_str}</p>
+                                            <button type="button" className="btn-upload-another" onClick={this.getAnotherVid}>Upload Another Video</button>
+                                            <button type="button" className="btn-done" onClick={this.doneUploadingVid}>Done Uploading</button>
                                         </div>
 
                                     :
 
                                     <div>
-                                        <h1>Got sentence translation</h1>
-                                        <h1> {this.state.sentence}</h1>
+                                            <p className="tr-result"> Sentence-level translation: {this.state.sentence}</p>
+                                       
                                     </div>
                             }
                         </div>
