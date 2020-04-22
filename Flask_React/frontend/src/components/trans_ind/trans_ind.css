@@ -134,26 +134,6 @@
     border: none;
 }
 
-.btn-reset{
-    background-color: #314455;
-    font-family: 'Raleway', sans-serif;
-    width: 200px;
-    height: 32px;
-    border-radius: 5px;
-    border-color: #314455;
-    color: white;
-    font-size: 18px;
-    border: none;
-    position: absolute;
-    left: 43.5%;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-
-.btn-reset:hover{
-    background-color: #8399af;
-}
-
 .btn-play{
     font-family: 'Raleway', sans-serif;
     width: 200px;
