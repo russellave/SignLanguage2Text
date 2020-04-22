@@ -6,7 +6,7 @@ import tensorflow as tf
 from flask import Flask, request, Response, jsonify, send_from_directory, abort
 from flask_cors import CORS
 import os
-from eval_i3d import run 
+from eval_one_i3d import runx
 from w2s import init_and_load_model, translate_sentence
 import gpt_2_simple as gpt2
 
@@ -92,12 +92,13 @@ def video_to_text():
     save_model = './checkpoints/' #doesn't matter
 
     root = 'eval_vids' #where data is
+    weights = 'weights/nslt_1042_007480_0.516498.pt' #where weights are
 
-    train_split =  'preprocess/eval.json' #doesn't matter
-    weights = 'weights/unproc_bs4_456225.pt' #where weights are
-
-    pred = 'test'
-    pred = run(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
+    pred = '0'
+    spot = str(os.path.join(os.getcwd(), 'eval_vids', video_name))
+    print(spot)
+    pred = runx(spot, mode='rgb', weights=weights)
+    # pred = runx(mode=mode, root=root, save_model=save_model, train_split=train_split, weights=weights, num_classes = num_classes)
     print ('prediction received in app.py: ', pred)
     print(type(pred))
     try:
