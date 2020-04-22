@@ -123,9 +123,8 @@
     border: none;
     background-color: #c25254;
     position: absolute;
-    left: 40%;
-    transform: translate(-50%, 0%);
-    margin-top: 70px;
+    left: 43.5%;
+    top: 70%;
 }
 
 .btn-story:hover{
@@ -133,26 +132,6 @@
     color: white;
     background-color: #d0787a;
     border: none;
-}
-
-.btn-reset{
-    background-color: #314455;
-    font-family: 'Raleway', sans-serif;
-    width: 200px;
-    height: 32px;
-    border-radius: 5px;
-    border-color: #314455;
-    color: white;
-    font-size: 18px;
-    border: none;
-    position: absolute;
-    left: 43.5%;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-
-.btn-reset:hover{
-    background-color: #8399af;
 }
 
 .btn-play{
@@ -166,9 +145,8 @@
     border: none;
     background-color: #c25254;
     position: absolute;
-    left: 60%;
-    transform: translate(-50%, 0%);
-    margin-top: 70px;
+    left: 63.5%;
+    top: 70%;
 }
 
 .btn-play:hover{
