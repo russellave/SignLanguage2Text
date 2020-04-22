@@ -17,6 +17,19 @@ class TranslationInput extends Component {
         }
     }
 
+    resetState = () => {
+        this.setState({
+            selected_file: null,
+            display_str: '',
+            new_input: false,
+            done_uploading: false,
+            sentence: '',
+            words: '',
+            gen_in: '',
+            gen_out: ''
+        })
+    }
+
     updateFile = event => {
         console.log(event.target.files[0]);
         this.setState({
@@ -165,6 +178,7 @@ class TranslationInput extends Component {
 
                                     <div className='gen-out'>
                                         {this.state.gen_out}
+                                        <button type="button" className="btn-reset" onClick={this.resetState}>Reset</button>
                                     </div>
                             }
                         </div>
