@@ -1,0 +1,240 @@
+.btn-submit{
+    font-family: 'Raleway', sans-serif;
+    width: 150px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 68%;
+}
+
+.btn-submit:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.btn-or-sub{
+    font-family: 'Raleway', sans-serif;
+    width: 150px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 56%;
+}
+
+.btn-or-sub:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.btn-done{
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #63809c;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 68%;
+}
+
+.btn-done:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #8399af;
+    border: none;
+}
+
+.btn-upload-another{
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 50%;
+    top: 61%;
+    transform: translate(-50%, 0%);
+}
+
+.btn-upload-another:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.btn-sent{
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 60px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 63.5%;
+    top: 48%;
+}
+
+.btn-sent:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.btn-story{
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 40%;
+    transform: translate(-50%, 0%);
+    margin-top: 70px;
+}
+
+.btn-story:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.btn-reset{
+    background-color: #314455;
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    position: absolute;
+    left: 43.5%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.btn-reset:hover{
+    background-color: #8399af;
+}
+
+.btn-play{
+    font-family: 'Raleway', sans-serif;
+    width: 200px;
+    height: 32px;
+    border-radius: 5px;
+    border-color: #314455;
+    color: white;
+    font-size: 18px;
+    border: none;
+    background-color: #c25254;
+    position: absolute;
+    left: 60%;
+    transform: translate(-50%, 0%);
+    margin-top: 70px;
+}
+
+.btn-play:hover{
+    border-color: #314455;
+    color: white;
+    background-color: #d0787a;
+    border: none;
+}
+
+.file-upload{
+    position: relative;
+    left: 40%;
+    top: 80%;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+}
+
+.form-control-tr{
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+.tr-result{
+    font-family: 'Raleway', sans-serif;
+    font-weight: thin;
+    font-size: 30px;
+    margin: 30px;
+    margin-left: 160px;
+    color: #314455;
+}
+
+.tr-in{
+    font-size: 20px;
+    margin-left: 220px;
+}
+
+.tr-sent{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 80px;
+    text-align: center;
+}
+
+.input-text{
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: thin;
+    position: absolute;
+    left: 45%;
+    top: 50%;
+}
+
+
+.gen-out{
+    white-space: pre-line;
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: thin;
+    margin-left: 160px;
+    margin-right: 160px;
+    margin-bottom: 30px;
+}
+
+.input-text-gen{
+    top: 70%;
+}

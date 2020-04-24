@@ -1,5 +1,7 @@
-tensorflow==2.0.1
-numpy
+spacy 
+torchtext
+tensorflow==1.15
+gpt-2-simple
 opencv-python==4.1.1.26
 lxml
 tqdm
@@ -7,3 +9,9 @@ flask
 seaborn
 pillow
 flask-cors
+numpy==1.16.4
+opencv==4.1.2.30
+torch==1.4.0
+torchvision==0.5.0
+moviepy==1.0.1
+gunicorn
