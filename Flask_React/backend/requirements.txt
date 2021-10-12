@@ -2,7 +2,7 @@ spacy
 torchtext
 tensorflow==1.15
 gpt-2-simple
-opencv-python==4.1.1.26
+opencv-python==4.2.0.32
 lxml
 tqdm
 flask
