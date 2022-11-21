@@ -1,6 +1,6 @@
 spacy 
 torchtext
-tensorflow==1.15
+tensorflow==2.9.3
 gpt-2-simple
 opencv-python==4.1.1.26
 lxml
